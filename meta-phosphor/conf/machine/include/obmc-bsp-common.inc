@@ -6,22 +6,24 @@ KERNEL_CLASSES ?= "kernel-fitimage"
 KERNEL_IMAGETYPES ?= "fitImage vmlinux"
 
 # Static images. This is the default if no other layout is specified.
-IMAGE_FSTYPES += "${@bb.utils.contains_any('DISTRO_FEATURES', \
-        'obmc-ubi-fs phosphor-mmc', \
-        '', \
-        'mtd-static mtd-static-tar mtd-static-alltar', d)}"
+#IMAGE_FSTYPES += "${@bb.utils.contains_any('DISTRO_FEATURES', \
+#        'obmc-ubi-fs phosphor-mmc', \
+#        '', \
+#        'mtd-static mtd-static-tar mtd-static-alltar', d)}"
 
 # UBI images.
-IMAGE_FSTYPES += "${@bb.utils.contains('DISTRO_FEATURES', \
-        'obmc-ubi-fs', \
-        'mtd-ubi mtd-ubi-tar', \
-        '', d)}"
+#IMAGE_FSTYPES += "${@bb.utils.contains('DISTRO_FEATURES', \
+#		'obmc-ubi-fs', \
+#		'mtd-ubi mtd-ubi-tar', \
+#		'', d)}"
 
 # eMMC images.
-IMAGE_FSTYPES += "${@bb.utils.contains('DISTRO_FEATURES', \
-        'phosphor-mmc', \
-        'wic.xz mmc-ext4-tar', \
-        '', d)}"
+#IMAGE_FSTYPES += "${@bb.utils.contains('DISTRO_FEATURES', \
+#        'phosphor-mmc', \
+#        'wic.xz mmc-ext4-tar', \
+#        '', d)}"
+
+IMAGE_FSTYPES += "ext4 tar.xz"
 
 INITRAMFS_CTYPE ?= "xz"
 INITRAMFS_FSTYPES = "cpio.${INITRAMFS_CTYPE}"

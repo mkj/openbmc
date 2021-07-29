@@ -21,10 +21,10 @@ DEPENDS += "phosphor-logging"
 DEPENDS += "libnl"
 DEPENDS += "stdplus"
 
-PACKAGECONFIG ??= "uboot-env default-link-local-autoconf default-ipv6-accept-ra persist-mac"
+PACKAGECONFIG ??= "default-link-local-autoconf default-ipv6-accept-ra persist-mac"
 
 UBOOT_ENV_RDEPENDS = "${@d.getVar('PREFERRED_PROVIDER_u-boot-fw-utils', True) or 'u-boot-fw-utils'}"
-PACKAGECONFIG[uboot-env] = "-Duboot-env=true,-Duboot-env=false,,${UBOOT_ENV_RDEPENDS}"
+#PACKAGECONFIG[uboot-env] = "-Duboot-env=true,-Duboot-env=false,,${UBOOT_ENV_RDEPENDS}"
 PACKAGECONFIG[default-link-local-autoconf] = "-Ddefault-link-local-autoconf=true,-Ddefault-link-local-autoconf=false,,"
 PACKAGECONFIG[default-ipv6-accept-ra] = "-Ddefault-ipv6-accept-ra=true,-Ddefault-ipv6-accept-ra=false,,"
 PACKAGECONFIG[nic-ethtool] = "-Dnic-ethtool=true,-Dnic-ethtool=false,,"

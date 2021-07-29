@@ -1,7 +1,5 @@
 [Unit]
 Description=Phosphor Inband IPMI
-Wants=clear-once.service
-After=clear-once.service
 After=org.openbmc.HostIpmi.service
 
 [Service]

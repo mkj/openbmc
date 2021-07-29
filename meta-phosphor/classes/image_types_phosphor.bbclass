@@ -19,13 +19,13 @@ FLASH_UBI_OVERLAY_BASETYPE ?= "ubifs"
 FLASH_EXT4_BASETYPE ?= "ext4"
 FLASH_EXT4_OVERLAY_BASETYPE ?= "ext4"
 
-IMAGE_TYPES += "mtd-static mtd-static-alltar mtd-static-tar mtd-ubi mtd-ubi-tar mmc-ext4-tar"
+IMAGE_TYPES += "mtd-static mtd-static-alltar mtd-static-tar mmc-ext4-tar"
 
 IMAGE_TYPEDEP:mtd-static = "${IMAGE_BASETYPE}"
 IMAGE_TYPEDEP:mtd-static-tar = "${IMAGE_BASETYPE}"
 IMAGE_TYPEDEP:mtd-static-alltar = "mtd-static"
-IMAGE_TYPEDEP:mtd-ubi = "${FLASH_UBI_BASETYPE}"
-IMAGE_TYPEDEP:mtd-ubi-tar = "${FLASH_UBI_BASETYPE}"
+#IMAGE_TYPEDEP:mtd-ubi = "${FLASH_UBI_BASETYPE}"
+#IMAGE_TYPEDEP:mtd-ubi-tar = "${FLASH_UBI_BASETYPE}"
 IMAGE_TYPEDEP:mmc-ext4-tar = "${FLASH_EXT4_BASETYPE}"
 IMAGE_TYPES_MASKED += "mtd-static mtd-static-alltar mtd-static-tar mtd-ubi mtd-ubi-tar mmc-ext4-tar"
 
@@ -191,7 +191,6 @@ do_generate_ubi[dirs] = "${S}/ubi"
 do_generate_ubi[depends] += " \
         ${PN}:do_image_${@d.getVar('FLASH_UBI_BASETYPE', True).replace('-', '_')} \
         virtual/kernel:do_deploy \
-        u-boot:do_deploy \
         mtd-utils-native:do_populate_sysroot \
         "
 
@@ -226,7 +225,6 @@ do_make_ubi[dirs] = "${S}/ubi"
 do_make_ubi[depends] += " \
         ${PN}:do_image_${@d.getVar('FLASH_UBI_BASETYPE', True).replace('-', '_')} \
         virtual/kernel:do_deploy \
-        u-boot:do_deploy \
         mtd-utils-native:do_populate_sysroot \
         "
 
@@ -326,7 +324,6 @@ do_generate_static[dirs] = "${S}/static"
 do_generate_static[depends] += " \
         ${PN}:do_image_${@d.getVar('IMAGE_BASETYPE', True).replace('-', '_')} \
         virtual/kernel:do_deploy \
-        u-boot:do_deploy \
         "
 
 make_signatures() {
@@ -414,7 +411,6 @@ do_generate_static_tar[dirs] = " ${S}/static"
 do_generate_static_tar[depends] += " \
         ${PN}:do_image_${@d.getVar('IMAGE_BASETYPE', True).replace('-', '_')} \
         virtual/kernel:do_deploy \
-        u-boot:do_deploy \
         openssl-native:do_populate_sysroot \
         ${SIGNING_KEY_DEPENDS} \
         ${PN}:do_copy_signing_pubkey \
@@ -432,7 +428,6 @@ do_generate_ubi_tar[dirs] = " ${S}/ubi"
 do_generate_ubi_tar[depends] += " \
         ${PN}:do_image_${@d.getVar('FLASH_UBI_BASETYPE', True).replace('-', '_')} \
         virtual/kernel:do_deploy \
-        u-boot:do_deploy \
         openssl-native:do_populate_sysroot \
         ${SIGNING_KEY_DEPENDS} \
         ${PN}:do_copy_signing_pubkey \
@@ -477,7 +472,6 @@ do_generate_ext4_tar[depends] += " \
         zstd-native:do_populate_sysroot \
         ${PN}:do_image_${FLASH_EXT4_BASETYPE} \
         virtual/kernel:do_deploy \
-        u-boot:do_deploy \
         openssl-native:do_populate_sysroot \
         ${SIGNING_KEY_DEPENDS} \
         ${PN}:do_copy_signing_pubkey \
