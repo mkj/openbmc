@@ -1,0 +1,10 @@
+diff --git a/Makefile b/Makefile
+index 65b1616..c376de5 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,4 +1,4 @@
+-libdir=/usr/lib
++libdir=/usr/lib64
+ includedir=/usr/include
+ 
+ PACKAGE_DEPS=gio-unix-2.0 glib-2.0

@@ -12,7 +12,9 @@ DEPENDS += "cjson"
 
 SKELETON_DIR = "libopenbmc_intf"
 
-SRC_URI += "file://gpio_defs.json"
+SRC_URI += "file://gpio_defs.json \
+            file://0001-hack.patch \
+            "
 
 # Users of libopenbmc_intf use custom makefiles that do not
 # support the proper library version detection and linking.
