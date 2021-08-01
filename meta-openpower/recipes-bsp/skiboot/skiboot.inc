@@ -23,7 +23,7 @@ do_compile() {
 # TODO: remove PREFIX=$prefix when updating to a version that has
 # http://patchwork.ozlabs.org/patch/923741/ is merged upstream
 do_install() {
-    oe_runmake -C ${SKIBOOT_SUBDIR} install DESTDIR=${D} prefix=/usr PREFIX=$prefix
+    oe_runmake -C ${SKIBOOT_SUBDIR} install DESTDIR=${D} PREFIX=/usr PREFIX=$prefix LIBDIR=${libdir}
 }
 
 # libflash.so is a SONAME and is strongly required in the production
