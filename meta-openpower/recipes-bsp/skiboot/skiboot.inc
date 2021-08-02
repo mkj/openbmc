@@ -1,7 +1,9 @@
 HOMEPAGE = "https://github.com/open-power"
 LICENSE = "Apache-2.0"
 
-SRC_URI += "git://github.com/open-power/skiboot.git;branch=skiboot-6.5.x;protocol=https"
+SRC_URI += "git://github.com/open-power/skiboot.git;branch=skiboot-6.5.x;protocol=https\
+            file://0001-wframe-warnings.patch \
+	    "
 
 FILESEXTRAPATHS:prepend := "${THISDIR}/skiboot:"
 
