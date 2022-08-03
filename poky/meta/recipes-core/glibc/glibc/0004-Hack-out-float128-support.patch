@@ -3,6 +3,8 @@ From: Anton Blanchard <anton@ozlabs.org>
 Date: Tue, 6 Jul 2021 15:55:53 +1000
 Subject: [PATCH 4/4] Hack out float128 support
 
+Upstream-Status: Inappropriate [hack]
+
 ---
  sysdeps/powerpc/powerpc64/le/Implies-before         |  4 ++--
  sysdeps/powerpc/powerpc64/le/Makefile               |  2 ++
