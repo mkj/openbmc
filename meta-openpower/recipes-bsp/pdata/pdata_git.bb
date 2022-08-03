@@ -19,6 +19,7 @@ DEPENDS = "pdbg \
            libxml-simple-perl-native \
            libxml-libxml-perl-native \
            ekb-native \
+           dtc-native \
            autoconf-archive"
 
 PDATA_CONFARG = "CHIP=p10"
