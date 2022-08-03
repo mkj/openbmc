@@ -25,3 +25,9 @@ SRC_URI = "git://git@github.com/open-power/libekb_p10;branch="main";name=libekb;
            "
 
 DEPENDS = "pdbg libxml-simple-perl-native"
+
+do_install:append() {
+    # microwatt workaround - ekb uses "arch=arm" as a test for being BMC
+    rm -f ${D}${datadir}/p10_attributes.db
+    rmdir ${D}${datadir}
+}
